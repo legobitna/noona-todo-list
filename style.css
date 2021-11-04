@@ -78,6 +78,7 @@ body {
 
 .tab-type div {
   padding: 1em;
+  cursor: pointer;
 }
 
 #tab-underline {
