@@ -13,7 +13,9 @@ userInput.addEventListener("keyup", function (event) {
   }
 });
 for (let i = 0; i < tabs.length; i++) {
-  tabs[i].addEventListener("click", (e) => filter(e));
+  tabs[i].addEventListener("click", function (event) {
+    filter(event);
+  });
 }
 
 function addTask() {
