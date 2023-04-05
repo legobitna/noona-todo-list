@@ -7,7 +7,7 @@ let selectedMenu = "tab-all";
 let filteredList = [];
 
 addButton.addEventListener("mousedown", addTask);
-userInput.addEventListener("keyup", function (event) {
+userInput.addEventListener("keydown", function (event) {
   if (event.keyCode === 13) {
     addTask(event);
   }
