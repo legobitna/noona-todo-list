@@ -3,8 +3,8 @@ let addButton = document.querySelector(".button-add");
 let tabs = document.querySelectorAll(".tab-type div");
 let underLine = document.getElementById("tab-underline");
 let taskList = [];
-let selectedMenu = "tab-all";
-let filteredList = [];
+let mode = "all";
+let filterList = [];
 
 addButton.addEventListener("mousedown", addTask);
 userInput.addEventListener("keyup", function (event) {
@@ -34,10 +34,11 @@ function addTask() {
 function render() {
   let result = "";
   list = [];
-  if (selectedMenu === "tab-all") {
+  if (mode === "all") {
     list = taskList;
   } else {
-    list = filteredList;
+    // else if(mode=== "ongoing" || mode==="done") 을 결국 else 로 치환할 수 있다.
+    list = filterList;
   }
 
   for (let i = 0; i < list.length; i++) {
@@ -84,24 +85,24 @@ function deleteTask(id) {
 }
 function filter(e) {
   if (e) {
-    selectedMenu = e.target.id;
+    mode = e.target.id;
     underLine.style.width = e.target.offsetWidth + "px";
     underLine.style.left = e.target.offsetLeft + "px";
     underLine.style.top =
       e.target.offsetTop + (e.target.offsetHeight - 4) + "px";
-  }
+  } // 진행중 상태에서 끝남으로 표시하면 바로 사라지는 부분은 event가 없음 그래서 조건추가
 
-  filteredList = [];
-  if (selectedMenu === "tab-not-done") {
+  filterList = [];
+  if (mode === "ongoing") {
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete == false) {
-        filteredList.push(taskList[i]);
+        filterList.push(taskList[i]);
       }
     }
-  } else if (selectedMenu === "tab-done") {
+  } else if (mode === "done") {
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete) {
-        filteredList.push(taskList[i]);
+        filterList.push(taskList[i]);
       }
     }
   }
