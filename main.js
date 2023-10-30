@@ -7,7 +7,7 @@ let mode = "all";
 let filterList = [];
 
 addButton.addEventListener("mousedown", addTask);
-userInput.addEventListener("keyup", function (event) {
+userInput.addEventListener("keydown", function (event) {
   if (event.keyCode === 13) {
     addTask(event);
   }
