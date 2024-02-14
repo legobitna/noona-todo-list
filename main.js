@@ -20,6 +20,7 @@ for (let i = 0; i < tabs.length; i++) {
 
 function addTask() {
   let taskValue = userInput.value;
+  if (taskValue === "") return alert("할일을 입력해주세요");
   let task = {
     content: taskValue,
     isComplete: false,
